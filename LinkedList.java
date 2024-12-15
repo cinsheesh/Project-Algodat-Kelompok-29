@@ -37,3 +37,23 @@ class LinkedList {
             }
         } while (swapped);
     }
+
+    public Node linearSearch(String name) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.name.equals(name)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println("    ID: " + temp.id + ", Name: " + temp.name + ", Position: " + temp.position);
+            temp = temp.next;
+        }
+    }
+}
