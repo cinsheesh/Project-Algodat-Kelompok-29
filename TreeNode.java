@@ -10,3 +10,29 @@ class TreeNode {
     }
 }
 
+class Tree {
+    TreeNode root;
+
+    public Tree(String rootDivision) {
+        root = new TreeNode(rootDivision);
+    }
+
+    public void addLeft(String division) {
+        if (root != null) {
+            root.left = new TreeNode(division);
+        }
+    }
+
+    public void addMiddle(String division) {
+        if (root != null) {
+            root.middle = new TreeNode(division);
+        }
+    }
+
+    public void addRight(String division) {
+        if (root != null) {
+            root.right = new TreeNode(division);
+        }
+    }
+
+   
