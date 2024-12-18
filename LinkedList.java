@@ -56,4 +56,15 @@ class LinkedList {
             temp = temp.next;
         }
     }
+
+    public Node findByName(String name) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.name.equalsIgnoreCase(name)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
 }
