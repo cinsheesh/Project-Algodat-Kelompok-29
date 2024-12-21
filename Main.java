@@ -207,6 +207,22 @@ public class Main {
         organizationTree.root.right.staffList.display();
     }    
 
+    private static void searchStaff(Tree organizationTree, String name) {
+        Node found = organizationTree.root.left.staffList.linearSearch(name);
+        if (found == null) {
+            found = organizationTree.root.middle.staffList.linearSearch(name);
+        }
+        if (found == null) {
+            found = organizationTree.root.right.staffList.linearSearch(name);
+        }
+        if (found != null) {
+            System.out.println("Ditemukan: " + found.name + " - ID: " + found.id + " - Position: " + found.position);
+        } else {
+            System.out.println("Data tidak ditemukan.");
+        }
+    }
+}
+
 
                     
 
