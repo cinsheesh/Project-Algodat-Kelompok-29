@@ -38,3 +38,32 @@ public class Main {
                     System.out.print("Masukkan nama divisi kanan: ");
                     organizationTree.addRight(scanner.nextLine());
                     break;
+
+                    case 2:
+                    if (organizationTree == null) {
+                        System.out.println("Silakan masukkan organisasi terlebih dahulu (pilih opsi 1).\n");
+                        break;
+                    }
+
+                    System.out.print("Masukkan jumlah staf untuk setiap divisi: ");
+                    int staffCount = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("Masukkan staf untuk divisi " + organizationTree.root.left.division);
+                    addStaffToDivision(organizationTree.root.left, staffCount, scanner);
+
+                    System.out.println("Masukkan staf untuk divisi " + organizationTree.root.middle.division);
+                    addStaffToDivision(organizationTree.root.middle, staffCount, scanner);
+
+                    System.out.println("Masukkan staf untuk divisi " + organizationTree.root.right.division);
+                    addStaffToDivision(organizationTree.root.right, staffCount, scanner);
+                    break;
+
+                case 3:
+                    if (organizationTree == null) {
+                        System.out.println("Organisasi belum dimasukkan.");
+                    } else {
+                        System.out.println("\nStruktur Organisasi:");
+                        organizationTree.traverse();
+                    }
+                    break;
