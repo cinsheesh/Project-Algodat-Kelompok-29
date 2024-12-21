@@ -39,7 +39,7 @@ public class Main {
                     organizationTree.addRight(scanner.nextLine());
                     break;
 
-                    case 2:
+                case 2:
                     if (organizationTree == null) {
                         System.out.println("Silakan masukkan organisasi terlebih dahulu (pilih opsi 1).\n");
                         break;
@@ -68,7 +68,7 @@ public class Main {
                     }
                     break;
 
-                    case 4:
+                case 4:
                     if (organizationTree == null) {
                         System.out.println("Silakan masukkan organisasi terlebih dahulu (pilih opsi 1).\n");
                         break;
@@ -111,7 +111,7 @@ public class Main {
                     taskQueue.display();
                     break;
 
-                    case 5:
+                case 5:
                     if (taskQueue.isEmpty()) {
                         System.out.println("Tidak ada tugas yang sedang antri.");
                     } else {
@@ -143,7 +143,7 @@ public class Main {
                     }
                     break;
                     
-                    case 6:
+                case 6:
                     
                     if (organizationTree == null) {
                         System.out.println("Organisasi belum dimasukkan.");
@@ -152,6 +152,45 @@ public class Main {
                     System.out.println("\nData Staff Setelah Sorting Berdasarkan ID:");
                     sortAndDisplayStaffById(organizationTree);
                     break;
+
+                case 7:
+                    if (organizationTree == null) {
+                        System.out.println("Organisasi belum dimasukkan.");
+                        break;
+                    }
+                    System.out.print("Masukkan nama staf untuk mencari: ");
+                    String searchName = scanner.nextLine();
+                    searchStaff(organizationTree, searchName);
+                    break;
+
+                case 8:
+                    exit = true;
+                    System.out.println("Program selesai. Terima kasih!");
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid. Coba lagi.");
+            }
+        }
+        scanner.close();
+    }
+
+    private static void addStaffToDivision(TreeNode divisionNode, int staffCount, Scanner scanner) {
+        for (int i = 0; i < staffCount; i++) {
+            System.out.print("Nama staf: ");
+            String name = scanner.nextLine();
+
+            System.out.print("ID staf: ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.print("Posisi staf: ");
+            String position = scanner.nextLine();
+
+            divisionNode.staffList.insertLast(new Node(name, id, position));
+        }
+    }
+
 
                     
 
