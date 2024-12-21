@@ -142,6 +142,16 @@ public class Main {
                         }
                     }
                     break;
+                    
+                    case 6:
+                    
+                    if (organizationTree == null) {
+                        System.out.println("Organisasi belum dimasukkan.");
+                        break;
+                    }
+                    System.out.println("\nData Staff Setelah Sorting Berdasarkan ID:");
+                    sortAndDisplayStaffById(organizationTree);
+                    break;
 
                     
 
