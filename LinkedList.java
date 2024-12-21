@@ -38,6 +38,32 @@ class LinkedList {
         } while (swapped);
     }
 
+    public void bubbleSortById() {
+        if (head == null || head.next == null) return;
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = head;
+            Node prev = null;
+            while (current != null && current.next != null) {
+                if (current.id > current.next.id) {
+                    // Swap nodes
+                    Node temp = current.next;
+                    current.next = temp.next;
+                    temp.next = current;
+                    if (prev == null) {
+                        head = temp;
+                    } else {
+                        prev.next = temp;
+                    }
+                    swapped = true;
+                }
+                prev = (prev == null) ? head : prev.next;
+                current = current.next;
+            }
+        } while (swapped);
+    }
+
     public Node linearSearch(String name) {
         Node temp = head;
         while (temp != null) {

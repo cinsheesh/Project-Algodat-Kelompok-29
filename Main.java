@@ -191,6 +191,22 @@ public class Main {
         }
     }
 
+    private static void sortAndDisplayStaffById(Tree organizationTree) {
+        System.out.println("Data Staff Sebelum Sorting:");
+        organizationTree.root.left.staffList.display();
+        organizationTree.root.middle.staffList.display();
+        organizationTree.root.right.staffList.display();
+
+        organizationTree.root.left.staffList.bubbleSortById();
+        organizationTree.root.middle.staffList.bubbleSortById();
+        organizationTree.root.right.staffList.bubbleSortById();
+
+        System.out.println("\nData Staff Setelah Sorting Berdasarkan ID:");
+        organizationTree.root.left.staffList.display();
+        organizationTree.root.middle.staffList.display();
+        organizationTree.root.right.staffList.display();
+    }    
+
 
                     
 
