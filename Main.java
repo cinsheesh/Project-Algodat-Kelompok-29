@@ -67,3 +67,82 @@ public class Main {
                         organizationTree.traverse();
                     }
                     break;
+
+                    case 4:
+                    if (organizationTree == null) {
+                        System.out.println("Silakan masukkan organisasi terlebih dahulu (pilih opsi 1).\n");
+                        break;
+                    }
+
+                    System.out.print("Masukkan jumlah tugas untuk antrian: ");
+                    int queueCount = scanner.nextInt();
+                    scanner.nextLine();  
+
+                    for (int i = 0; i < queueCount; i++) {
+                        System.out.print("Nama tugas: ");
+                        String taskName = scanner.nextLine();
+
+                        System.out.println("Pilih staf untuk tugas ini:");
+                        organizationTree.root.left.staffList.display();
+                        organizationTree.root.middle.staffList.display();
+                        organizationTree.root.right.staffList.display();
+
+                        System.out.print("Masukkan nama staf yang dituju: ");
+                        String targetStaffName = scanner.nextLine();
+
+                        Node targetStaff = organizationTree.root.left.staffList.linearSearch(targetStaffName);
+                        if (targetStaff == null) {
+                            targetStaff = organizationTree.root.middle.staffList.linearSearch(targetStaffName);
+                        }
+                        if (targetStaff == null) {
+                            targetStaff = organizationTree.root.right.staffList.linearSearch(targetStaffName);
+                        }
+
+                        if (targetStaff != null) {
+                            String taskWithStaff = taskName + " (Ditugaskan ke: " + targetStaff.name + ")";
+                            taskQueue.enqueue(new Node(taskWithStaff, 0, ""));
+                            System.out.println("Tugas '" + taskName + "' berhasil ditambahkan ke staf " + targetStaff.name);
+                        } else {
+                            System.out.println("Staf tidak ditemukan. Tugas ini diabaikan.");
+                        }
+                    }
+
+                    System.out.println("\nDaftar tugas yang telah ditambahkan ke antrian:");
+                    taskQueue.display();
+                    break;
+
+                    case 5:
+                    if (taskQueue.isEmpty()) {
+                        System.out.println("Tidak ada tugas yang sedang antri.");
+                    } else {
+                        System.out.println("\nDaftar tugas yang ada di antrian:");
+                        taskQueue.display();
+                
+                        System.out.print("Pilih tugas yang telah selesai: ");
+                        String completedTaskName = scanner.nextLine();
+        
+                        Node completedTask = null;
+                        Node temp = taskQueue.front;
+                
+                        while (temp != null) {
+                            if (temp.name.contains(completedTaskName)) {
+                                completedTask = temp;
+                                break;
+                            }
+                            temp = temp.next;
+                        }
+                
+                        if (completedTask != null) {
+                            
+                            taskQueue.dequeue();  
+                            historyStack.push(completedTask);  
+                            System.out.println("Tugas: " + completedTask.name + " telah selesai dikerjakan.");
+                        } else {
+                            System.out.println("Tugas tidak ditemukan.");
+                        }
+                    }
+                    break;
+
+                    
+
+                    
